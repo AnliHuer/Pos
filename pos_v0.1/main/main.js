@@ -16,11 +16,9 @@ function printReceipt(inputs) {
   var result = "***<没钱赚商店>收据***"+'\n';
   var sum_price = 0;;
   var inputs_new = [];
-
   inputs.forEach(function(val){
     map_new_inputs(val,inputs_new);
   })
-
   inputs_new.forEach(function(item){
       result += "名称："+item.name+
       "，数量："+item.count+item.unit+

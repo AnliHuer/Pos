@@ -1,4 +1,3 @@
-
 function printReceipt(inputs) {
     var result = "***<没钱赚商店>收据***"+'\n';
     var count = 0;
