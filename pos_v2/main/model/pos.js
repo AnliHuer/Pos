@@ -1,28 +1,31 @@
 /**
  * Created by anlihuer on 7/25/15.
  */
-function Pos(cart){
-  this.cart = cart;
+function Pos(){
 }
 
 
 
-Pos.prototype.setItemString = function(){
+Pos.prototype.setItemString = function(cart){
   var itemString = '';
-  this.cart.cartItems.forEach(function(val){
-    itemString += "名称："+val.name+
-    "，数量："+val.count+val.unit+
-    "，单价："+val.price+"(元)"+
-    "，小计："+val.subTotal+"(元)"+"\n";
+
+  cart.cartItems.forEach(function(val){
+    itemString += "名称："+val.getName()+
+    "，数量："+val.count+val.getUnit()+
+    "，单价："+val.getPrice().toFixed(2)+"(元)"+
+    "，小计："+val.getSubTotal().toFixed(2)+"(元)"+"\n";
   });
   return itemString;
 };
 
 
-Pos.prototype.setPromotionString = function(){
-  var itemString = '';
-  this.cart.cartItems.forEach(function(val){
-    itemString += "名称："+val.name+
-    "，数量："+val.promotionCount+val.unit+"\n";
+Pos.prototype.setPromotionString = function(cart){
+  var promotionString = '';
+  cart.cartItems.forEach(function(val){
+    if(val.getPromotionCount()){
+      promotionString += "名称："+val.getName()+
+      "，数量："+val.getPromotionCount()+val.getUnit()+"\n";
+    }
   });
+  return promotionString;
 };
